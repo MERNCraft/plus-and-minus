@@ -1,0 +1,129 @@
+body {
+  --counter: 0;
+  counter-set: digit var(--counter);
+
+  margin: 0;
+  color: #ddd;
+  background-color: #222;
+}
+
+main {
+  position: relative;
+  width: 300px;
+  height: 150px;
+  padding-top: 15px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+label span {
+  display: none;
+}
+
+body:has(#d0:checked) {
+  --counter: 0;
+  .d9 span.minus { display: block }
+  /* Notice that the "minus" span belongs to 9 */
+  .d1 span.plus  { display: block }
+}
+body:has(#d1:checked) {
+  --counter: 1;
+  .d0 span.minus { display: block }
+  .d2 span.plus  { display: block }
+}
+body:has(#d2:checked) {
+  --counter: 2;
+  .d1 span.minus { display: block }
+  .d3 span.plus  { display: block }
+}
+body:has(#d3:checked) {
+  --counter: 3;
+  .d2 span.minus { display: block }
+  .d4 span.plus  { display: block }
+}
+body:has(#d4:checked) {
+  --counter: 4;
+  .d3 span.minus { display: block }
+  .d5 span.plus  { display: block }
+}
+body:has(#d5:checked) {
+  --counter: 5;
+  .d4 span.minus { display: block }
+  .d6 span.plus  { display: block }
+}
+body:has(#d6:checked) {
+  --counter: 6;
+  .d5 span.minus { display: block }
+  .d7 span.plus  { display: block }
+}
+body:has(#d7:checked) {
+  --counter: 7;
+  .d6 span.minus { display: block }
+  .d8 span.plus  { display: block }
+}
+body:has(#d8:checked) {
+  --counter: 8;
+  .d7 span.minus { display: block }
+  .d9 span.plus  { display: block }
+}
+body:has(#d9:checked) {
+  --counter: 9;
+  .d8 span.minus { display: block }
+  /* Notice that the "plus" span belongs to 0 */
+  .d0 span.plus  { display: block }
+}
+
+span {
+  --size: 64px;
+  font-size: var(--size);
+}
+
+span.display::after {
+  content: counter(digit);
+}
+
+span {
+  position: absolute;
+  top: 55px;
+}
+span:first-child {
+  left: 10px;
+}
+span:not(.display) {
+  padding: 0 20px;
+  border: 1px outset #ddd;
+  border-radius: 80px;
+
+  &:last-child{
+    left: 90px;
+  }
+
+  &:hover {
+    background-color: #111;
+
+    &:active {
+      background-color: #000;
+      border-style: inset;
+    }
+  }
+}
+
+/* Show the GitHub logo */
+a.github {
+  width: 0;
+  height: 0;
+
+  img {
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+    width: 32px;
+    height: 32px;
+    filter: grayscale(1);
+    opacity: 0.25;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
